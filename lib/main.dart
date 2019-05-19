@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'lesson.dart';
 
 
 void main() => runApp(MyApp());
 
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,10 +32,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  _makeLesson(Color background, Color text, String title, String imagePath) {
+  _makeLesson(Color background, Color textColor, String title, String imagePath) {
 
-    return Card(
+    return GestureDetector(child: Card(
 
+      elevation: 4.00,
       color: background,
       child: Column(
 
@@ -45,18 +47,20 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: EdgeInsets.fromLTRB(2.00, 4.00, 0.00, 8.00) ,
 
             child: Text(title,
-            textAlign: TextAlign.start,
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontSize: 20.00),
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: textColor,
+                  fontSize: 20.00),
             ),
           ),
 
           Image.asset(imagePath),
         ],
       ),
-    );
+    ),
+
+      onTap: () => debugPrint('Hey'),);
 
   }
 
@@ -75,6 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             _makeLesson(Colors.white, Colors.black, '1. Introducere' , 'images/im.png'),
             _makeLesson(Colors.white, Colors.black, '2. Gradele unui nod' , 'images/im.png'),
+
 
 
           ],
